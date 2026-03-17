@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X Influencer Stats</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <h1>X Influencer Stats</h1>
+          <p>按 1 小时统计某个账号的发帖数量</p>
+        </div>
+      </header>
+
+      <section class="panel">
+        <label for="bearerToken">X API Bearer Token</label>
+        <input id="bearerToken" name="bearerToken" type="password" placeholder="输入你的 Bearer Token" />
+        <p class="hint">Token 保存在 `chrome.storage.local`，仅保留在当前浏览器配置中。</p>
+      </section>
+
+      <section class="panel form-grid">
+        <label for="username">账号用户名</label>
+        <input id="username" name="username" type="text" placeholder="例如 elonmusk" />
+
+        <label for="quickRange">快捷时间</label>
+        <select id="quickRange" name="quickRange">
+          <option value="custom">自定义</option>
+          <option value="24h">最近 24 小时</option>
+          <option value="7d" selected>最近 7 天</option>
+        </select>
+
+        <label for="startTime">开始时间</label>
+        <input id="startTime" name="startTime" type="datetime-local" />
+
+        <label for="endTime">结束时间</label>
+        <input id="endTime" name="endTime" type="datetime-local" />
+
+        <label class="checkbox">
+          <input id="excludeReplies" type="checkbox" checked />
+          排除回复
+        </label>
+
+        <label class="checkbox">
+          <input id="excludeRetweets" type="checkbox" checked />
+          排除转推
+        </label>
+      </section>
+
+      <section class="actions">
+        <button id="saveButton" type="button" class="secondary">保存设置</button>
+        <button id="fetchButton" type="button" class="primary">获取统计</button>
+      </section>
+
+      <section class="panel">
+        <div id="status" class="status">等待查询</div>
+        <div id="summary" class="summary" hidden></div>
+      </section>
+
+      <section id="visuals" class="panel visuals" hidden>
+        <div class="visuals-head">
+          <div class="section-head">
+            <h2>7 天热力图</h2>
+            <p>一眼看出每天哪个小时段最活跃</p>
+          </div>
+          <label class="timezone-control" for="timezoneMode">
+            <span>图表时区</span>
+            <select id="timezoneMode" name="timezoneMode">
+              <option value="local">本地时间</option>
+              <option value="utc">UTC</option>
+            </select>
+          </label>
+        </div>
+        <div id="heatmapChart" class="heatmap"></div>
+
+        <div class="section-head daily-head">
+          <h2>每日总量</h2>
+          <p>快速比较每天发帖数</p>
+        </div>
+        <div id="dailyBarChart" class="daily-bars"></div>
+      </section>
+    </main>
+
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>

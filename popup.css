@@ -1,0 +1,246 @@
+:root {
+  color-scheme: light;
+  --bg: #f5efe2;
+  --panel: rgba(255, 251, 245, 0.92);
+  --line: #d7ccb8;
+  --text: #1f1b16;
+  --muted: #6f675d;
+  --accent: #0a7f78;
+  --accent-strong: #085e59;
+  --danger: #a1332b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 560px;
+  font-family: "IBM Plex Sans", "PingFang SC", "Noto Sans SC", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(10, 127, 120, 0.14), transparent 35%),
+    linear-gradient(180deg, #f9f4ea 0%, var(--bg) 100%);
+}
+
+.app {
+  padding: 16px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.panel {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  font: inherit;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  background: #fffdf8;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.checkbox input {
+  width: auto;
+}
+
+.hint,
+.status,
+.summary {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+button {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+button.primary {
+  color: #fff;
+  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+}
+
+button.secondary {
+  background: #fffaf0;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.summary {
+  margin-top: 10px;
+}
+
+.visuals {
+  display: grid;
+  gap: 14px;
+}
+
+.visuals-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.section-head p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.daily-head {
+  margin-top: 4px;
+}
+
+.timezone-control {
+  display: grid;
+  gap: 6px;
+  min-width: 110px;
+  font-size: 12px;
+}
+
+.timezone-control select {
+  padding: 8px 10px;
+}
+
+.heatmap {
+  display: grid;
+  gap: 6px;
+  overflow-x: auto;
+}
+
+.heatmap-header,
+.heatmap-row {
+  display: grid;
+  grid-template-columns: 58px repeat(24, minmax(14px, 1fr));
+  gap: 4px;
+  align-items: center;
+}
+
+.day-label,
+.hour-label,
+.axis-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.hour-label {
+  text-align: center;
+  transform: scale(0.9);
+}
+
+.heat-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  min-height: 14px;
+  border-radius: 4px;
+}
+
+.heat-cell::after {
+  content: attr(data-count);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 8px;
+  color: rgba(31, 27, 22, 0.72);
+}
+
+.daily-bars {
+  display: grid;
+  gap: 8px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 54px 1fr 34px;
+  gap: 8px;
+  align-items: center;
+}
+
+.bar-track {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(10, 127, 120, 0.12);
+}
+
+.bar-fill {
+  height: 100%;
+  min-width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0a7f78, #3aa498);
+}
+
+.bar-value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .visuals-head {
+    flex-direction: column;
+  }
+}

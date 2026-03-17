@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "X Influencer Hourly Posts",
+  "version": "0.1.0",
+  "description": "Fetch an X user's posts and group them into 1-hour buckets.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.x.com/*"
+  ],
+  "action": {
+    "default_title": "X Influencer Stats",
+    "default_popup": "popup.html"
+  }
+}

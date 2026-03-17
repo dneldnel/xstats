@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X Charts Gallery</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">X Posting Rhythm</p>
+          <h1>图表选择页</h1>
+          <p class="hero-copy">先把真实数据和 demo 方案都摆出来，再决定哪种视图最适合放回 extension 主界面。</p>
+        </div>
+        <div class="hero-actions">
+          <button id="useLatestButton" type="button" class="ghost">使用真实数据</button>
+          <button id="useDemoButton" type="button" class="ghost">使用 Demo 数据</button>
+          <button id="refreshButton" type="button" class="primary">刷新图表</button>
+        </div>
+      </header>
+
+      <section class="summary-grid">
+        <article class="metric">
+          <span class="metric-label">账号</span>
+          <strong id="metricUsername">-</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">总发帖数</span>
+          <strong id="metricTotal">0</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">活跃小时</span>
+          <strong id="metricActiveHours">0</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">峰值小时</span>
+          <strong id="metricPeakHour">-</strong>
+        </article>
+      </section>
+
+      <section class="meta-panel">
+        <div id="datasetMeta" class="meta-line">未加载数据</div>
+        <div id="viewHint" class="meta-line">热力图适合看“哪一天、哪个时段最活跃”；柱状图适合看总量和尖峰。</div>
+      </section>
+
+      <section class="layout">
+        <article class="card card-wide">
+          <div class="card-head">
+            <div>
+              <h2>方案 A: 7 天 x 24 小时热力图</h2>
+              <p>最适合一眼看出每天的活跃时段和连续高峰。</p>
+            </div>
+          </div>
+          <div id="heatmapChart" class="heatmap"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>方案 B: 每日总量柱状图</h2>
+              <p>对比每天发帖总量，适合看日级别波动。</p>
+            </div>
+          </div>
+          <div id="dailyBarChart" class="bars"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>方案 C: 小时分布画像</h2>
+              <p>把所有天叠加后，找出最常发帖的小时段。</p>
+            </div>
+          </div>
+          <div id="hourProfileChart" class="bars compact"></div>
+        </article>
+
+        <article class="card card-wide">
+          <div class="card-head">
+            <div>
+              <h2>方案 D: 168 小时时序条带</h2>
+              <p>保留连续时间线，适合观察突发峰值和沉寂段。</p>
+            </div>
+          </div>
+          <div id="timelineChart" class="timeline"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="dashboard.js" type="module"></script>
+  </body>
+</html>
